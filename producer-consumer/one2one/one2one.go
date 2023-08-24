@@ -25,11 +25,12 @@ func producer(c chan<- *Task) {
 		c <- &Task{ID: i}
 	}
 
-	close(c)
+	close(c) // 生产者不关闭channel，消费者不会退出循环一直阻塞，wg一直等不到协程结束就会产生死锁
 }
 
 // 消费者
 func consumer(c <-chan *Task) {
+	// 生产者端关闭channel才会中断循环
 	for task := range c {
 		task.Run()
 	}
