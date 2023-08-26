@@ -36,6 +36,7 @@ func consumer(c <-chan *Task) {
 	}
 }
 
+// Exec 执行
 func Exec() {
 	wg := sync.WaitGroup{}
 	wg.Add(2)

@@ -24,8 +24,8 @@ func (o *Out) Output() {
 		case i := <-o.data:
 			fmt.Println(i)
 		}
-		
-		fmt.Println("out put") // 命中一次case才执行一次for
+
+		//fmt.Println("out put") // 命中一次case才执行一次for
 	}
 }
 
