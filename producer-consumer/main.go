@@ -1,8 +1,11 @@
 package main
 
 import (
-	"qt/producer-consumer/many2one"
+	"os"
+	"os/signal"
+	"qt/producer-consumer/many2many"
 	"qt/producer-consumer/out"
+	"syscall"
 )
 
 func main() {
@@ -15,10 +18,11 @@ func main() {
 
 	//one2one.Exec()
 	//one2many.Exec()
-	many2one.Exec()
+	//many2one.Exec()
+	many2many.Exec()
 
 	// 等待退出信号
-	//s := make(chan os.Signal)
-	//signal.Notify(s, syscall.SIGINT, syscall.SIGALRM)
-	//<-s
+	s := make(chan os.Signal)
+	signal.Notify(s, syscall.SIGINT, syscall.SIGALRM)
+	<-s
 }
